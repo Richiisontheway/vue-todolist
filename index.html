@@ -19,16 +19,55 @@
     <!-- CSS -->
 
     <link rel="stylesheet" href="css/style.css">
-    
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
 
     <header>
 
-
+        <h1>
+            BOOLEAN
+        </h1>
 
     </header>
     <main>
+
+
+        <div id="app">
+
+            <div>
+
+                <input type="text" v-model='newTodo'
+                placeholder="task da fare" @keyup.enter="submit">
+
+                <button @click="addTodo()">
+                    Aggiungi alla lista
+                </button>
+
+            </div>
+            <div>
+
+                <ul v-if="todos.length > 0">
+                    <li v-for="( singleTodo , inidiceTodo ) in todos">
+                        <span :class="singleTodo.done == true ? 
+                        'text-decoration-line-through' : ''">
+                            {{singleTodo.text}}
+                        </span>
+                        <button @click="removeTodo(inidiceTodo)" class="px-1 ">
+                            x
+                        </button>
+
+                    </li>
+                    
+                </ul>
+                <p v-else>
+                    non ci sono task
+                </p>
+                
+            </div>
+
+        </div>
 
 
 
